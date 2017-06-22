@@ -36,12 +36,17 @@ public class BH_Player : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		if (invincibility)
 			return;
-
-		if(clignotteCoroutine != null)
-			StopCoroutine(clignotteCoroutine);
-		clignotteCoroutine = StartCoroutine(Clignotte());
-		invincibility = true;
-		GameManager.instance.removeLife();
+		if (c.GetComponent<BH_Bonus>() != null) {
+			GameManager.instance.addLife();
+			Destroy(c.gameObject);
+		} else { 
+			if(clignotteCoroutine != null)
+				StopCoroutine(clignotteCoroutine);
+			clignotteCoroutine = StartCoroutine(Clignotte());
+			invincibility = true;
+			GameManager.instance.removeLife();
+			Destroy(c.gameObject);
+		}
 	}
 
 	IEnumerator Clignotte() {

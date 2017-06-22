@@ -18,6 +18,7 @@ public class CB_GameManager : MonoBehaviour {
 	public Material worldMaterial;
 	public Material barMaterial;
 
+	public bool spawnBriks = true;
 	bool switcher = true;
 
 	// Use this for initialization
@@ -47,14 +48,14 @@ public class CB_GameManager : MonoBehaviour {
 			switcher = !switcher;
 			SwitchColors (switcher);
 		}
-
-		brickSpanTimeLeft -= Time.deltaTime;
-		if (brickSpanTimeLeft < 0) 
-		{
-			brickSpanTimeLeft = brickSpanTime;
-			AppendLine ();
+		if (spawnBriks) { 
+			brickSpanTimeLeft -= Time.deltaTime;
+			if (brickSpanTimeLeft < 0) 
+			{
+				brickSpanTimeLeft = brickSpanTime;
+				AppendLine ();
+			}
 		}
-
 	}
 
 	void AppendLine()

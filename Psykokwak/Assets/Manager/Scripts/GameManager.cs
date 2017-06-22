@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
 	public CB_Bar CasseBriquePlayer;
 	Camera[] cameras;
 
-
+	bool colorSwitched = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 		CasseBriquePlayer = FindObjectOfType<CB_Bar>();
 
 		cameras = FindObjectsOfType<Camera>();
-		StartCoroutine(ChangeCameraPosition());
+		StartCoroutine(MalusVisuels());
 	}
 
 	IEnumerator TimeCount() {
@@ -83,8 +83,25 @@ public class GameManager : MonoBehaviour {
 		CasseBriquePlayer.SetPosition(positionPlayer);
 	}
 
-	IEnumerator ChangeCameraPosition() {
+	IEnumerator MalusVisuels() {
+		yield return new WaitForSeconds(Random.Range(15f, 25f));
+		ChangeCameraPos();
+
+
 		yield return new WaitForSeconds(Random.Range(20f, 30f));
+		SwitchColors();
+		ChangeCameraPos();
+
+		StartCoroutine( MalusVisuels());
+	}
+
+	private void SwitchColors() {
+		colorSwitched = !colorSwitched;
+		FindObjectOfType<CB_GameManager>().SwitchColors(colorSwitched);
+		FindObjectOfType<BH_EnnemyManager>().SwitchColors(colorSwitched);
+	}
+
+	private void ChangeCameraPos() {
 		for (int i = 0; i < cameras.Length; i++) {
 			Rect rect = cameras[i].rect;
 			if (rect.x == 0) {
@@ -95,8 +112,6 @@ public class GameManager : MonoBehaviour {
 			cameras[i].rect = rect;
 			Debug.Log(rect);
 		}
-
-		StartCoroutine( ChangeCameraPosition());
 	}
 
 	public void removeLife(){

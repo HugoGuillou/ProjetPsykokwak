@@ -46,14 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BulletHell\Scripts\BH_Bonus.cs" />
      <Compile Include="Assets\BulletHell\Scripts\BH_Enemy.cs" />
+     <Compile Include="Assets\BulletHell\Scripts\BH_EnnemyManager.cs" />
      <Compile Include="Assets\BulletHell\Scripts\BH_Player.cs" />
      <Compile Include="Assets\BulletHell\Scripts\BH_Spawner.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\CB_Ball.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\CB_Bar.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\CB_Brick.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\CB_GameManager.cs" />
-     <Compile Include="Assets\CasseBrique\Scripts\Grid.cs" />
      <Compile Include="Assets\Manager\Scripts\GameManager.cs" />
      <Compile Include="Assets\Manager\Scripts\Tuto.cs" />
  <Reference Include="UnityEngine.UI">
