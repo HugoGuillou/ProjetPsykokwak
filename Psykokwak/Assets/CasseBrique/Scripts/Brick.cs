@@ -4,11 +4,17 @@ using System.Collections;
 public class Brick : MonoBehaviour {
 
 	public float height;
+	
+	CB_GameManager gameManager;
 
 	void Awake()
 	{
-		//Mesh mesh = GetComponent<MeshFilter> ();
-		height = transform.lossyScale.y;
+		Mesh mesh = GetComponent<MeshFilter> ().mesh;
+		Bounds bounds = mesh.bounds;
+
+		gameManager = FindObjectOfType<CB_GameManager> ();
+
+		//height = transform.lossyScale.y;
 	}
 
 	// Use this for initialization
@@ -25,7 +31,7 @@ public class Brick : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "CB_Ball") 
 		{
-			Destroy(gameObject);
+			gameManager.destroyBrick(this);
 		}
 	}
 }

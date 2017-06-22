@@ -22,6 +22,10 @@ public class CB_GameManager : MonoBehaviour {
 		for(int i=0; i<brickRows; ++i) 
 		{
 			bricks[i] = new Brick[brickCols];
+			for(int j=0; j<brickCols; ++j)
+			{
+				bricks[i][j] = null;
+			}
 		}
 
 		brickSpanTimeLeft = brickSpanTime;
@@ -42,24 +46,61 @@ public class CB_GameManager : MonoBehaviour {
 
 	void AppendLine()
 	{
-		for (int i=1; i< brickRows-1; ++i) 
-		{
-			for(int j=0; j < brickCols; ++j)
-			{
-				Transform currentBrick = bricks[i][j].transform;
-
-				Vector3 pos = currentBrick.position;
-				pos.y += brickPrefab.height;
-				currentBrick.position = pos;
-
-				bricks[i+1][j] = bricks[i][j];
-			}
-		}
 
 		for(int j=0; j < brickCols; ++j)
 		{
-			Brick b = Instantiate(brickPrefab, transform.position, transform.rotation) as Brick; 
+			if(bricks[brickCols-1][j] != null)
+				destroyBrick(bricks[brickCols-1][j]);
+		}
+
+	
+
+		Debug.Log("Append");
+
+		for (int i=brickRows-1; i>0; --i) 
+		{
+
+			for(int j=0; j < brickCols; ++j)
+			{
+				if(bricks[i-1][j] != null)
+				{
+					Vector3 pos = bricks[i-1][j].transform.position;
+					pos.y -= 1.5f;
+
+					bricks[i-1][j].transform.position = pos;
+
+				}
+				
+				bricks[i][j] = bricks[i-1][j];
+			}
+		}
+
+
+		for(int j=0; j < brickCols; ++j)
+		{
+			Vector3 brickPos = transform.position;
+			brickPos.x += (j * 3.2f) + 0.18f;
+
+			Brick b = Instantiate(brickPrefab, brickPos, transform.rotation) as Brick; 
 			bricks[0][j] = b;
+		}
+
+
+	}
+
+	public void destroyBrick(Brick brick)
+	{
+		for (int i=0; i< brickRows-1; ++i) 
+		{
+			for(int j=0; j < brickCols; ++j)
+			{
+				if(bricks[i][j] == brick)
+				{
+					Destroy (brick.gameObject);
+					bricks[i][j] = null;
+					return;
+				}
+			}
 		}
 	}
 }
