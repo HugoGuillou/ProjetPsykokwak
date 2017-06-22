@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Brick : MonoBehaviour {
 
+	public float height;
+
+	void Awake()
+	{
+		//Mesh mesh = GetComponent<MeshFilter> ();
+		height = transform.lossyScale.y;
+	}
+
 	// Use this for initialization
 	void Start () {
 	
