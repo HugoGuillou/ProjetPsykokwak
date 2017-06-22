@@ -17,13 +17,13 @@ public class CB_Bar : MonoBehaviour {
 	public void SetPosition(float fVal)
 	{
 		float xAxis = fVal * 7;
-
+		Debug.Log (xAxis);
 		//_velocity = new Vector3 (xAxis, 0, 0) * _speed;
 		//transform.Translate (_velocity * Time.deltaTime);
 
-		Vector3 pos = transform.position;
+		Vector3 pos = transform.localPosition;
 		pos.x = xAxis;
-		transform.position = pos;
+		transform.localPosition = pos;
 	
 	}
 

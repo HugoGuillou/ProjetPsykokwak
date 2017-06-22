@@ -32,7 +32,6 @@ public class CB_Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-
 		if (respawnTimer) 
 		{
 			respawnTimeLeft -= Time.deltaTime;

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 	public float deltaMove = 0.1f;
 
 	public BH_Player BulletHellPlayer;
-	public Bar CasseBriquePlayer;
+	public CB_Bar CasseBriquePlayer;
 
 	// Use this for initialization
 	void Awake () {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 		//StartCoroutine(TimeCount());
 		BulletHellPlayer = FindObjectOfType<BH_Player>();
-		CasseBriquePlayer = FindObjectOfType<Bar>();
+		CasseBriquePlayer = FindObjectOfType<CB_Bar>();
 	}
 
 	IEnumerator TimeCount() {
