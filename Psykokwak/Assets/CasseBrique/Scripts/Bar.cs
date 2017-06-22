@@ -13,10 +13,20 @@ public class Bar : MonoBehaviour {
 	
 
 	}
+
+	void SetPosition(float fVal)
+	{
+		float xAxis = fVal * 7;
+
+		_velocity = new Vector3 (xAxis, 0, 0) * _speed;
+		
+		transform.Translate (_velocity * Time.deltaTime);
 	
+	}
+
 	// Update is called once per frame
 	void Update () {
-
+/*
 		float xAxis = Input.GetAxis ("CB_Horizontal");
 
 		if ((xAxis > 0 && blockedRight) || 
@@ -28,6 +38,7 @@ public class Bar : MonoBehaviour {
 		_velocity = new Vector3 (xAxis, 0, 0) * _speed;
 
 		transform.Translate (_velocity * Time.deltaTime);
+*/
 		
 	}
 
