@@ -12,11 +12,19 @@ public class GameManager : MonoBehaviour {
 
 	public bool isRunning = true;
 
+	public float positionPlayer = 0f;
+	public float deltaMove = 0.1f;
+
+	public BH_Player BulletHellPlayer;
+	public Bar CasseBriquePlayer;
+
 	// Use this for initialization
 	void Awake () {
 		timerCount = 0;
 		instance = this;
 		//StartCoroutine(TimeCount());
+		BulletHellPlayer = FindObjectOfType<BH_Player>();
+		CasseBriquePlayer = FindObjectOfType<Bar>();
 	}
 
 	IEnumerator TimeCount() {
@@ -37,6 +45,20 @@ public class GameManager : MonoBehaviour {
 			Application.LoadLevel(0);
 	}
 
+	public void FixedUpdate() {
+		if (Input.GetKey(KeyCode.Q) && positionPlayer > -1f) {
+			positionPlayer-=  deltaMove;
+			setPositionPlayerMiniGames();
+		} else if (Input.GetKey(KeyCode.D) && positionPlayer < 1) {
+			positionPlayer += deltaMove;
+			setPositionPlayerMiniGames();
+		}
+	}
+
+	public void setPositionPlayerMiniGames() {
+		BulletHellPlayer.setPositionPlayer(positionPlayer);
+		CasseBriquePlayer.SetPosition(positionPlayer);
+	}
 
 	public void removeLife(){
 		if (livesLeft == 0)
