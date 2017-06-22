@@ -15,6 +15,8 @@ public class BH_Player : MonoBehaviour {
 	//bool canMove
 	// Use this for initialization
 	void Start () {
+		if(limitPos <= 0)
+			limitPos = 4;
 		rb = this.GetComponent<Rigidbody>();
 		renderer = this.GetComponent<Renderer>();
 		playerColor = renderer.material.color;;
@@ -56,7 +58,6 @@ public class BH_Player : MonoBehaviour {
 	}
 
 	public void setPositionPlayer(float positionPlayer) {
-		Debug.Log(this.transform.position);
 		this.transform.localPosition =
 			new Vector3(positionPlayer * limitPos, this.transform.position.y, this.transform.position.z);
 	}

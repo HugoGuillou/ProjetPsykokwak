@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 	public int livesLeft = 3;
 	public UnityEngine.UI.Text DispayLivesCount;
 	public UnityEngine.UI.Text DispayTime;
+
+	public GameObject GameOverPanel;
+
 	public float timerCount {get; set;}
 
 	public bool isRunning = true;
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	public BH_Player BulletHellPlayer;
 	public CB_Bar CasseBriquePlayer;
+	Camera[] cameras;
 
 	// Use this for initialization
 	void Awake () {
@@ -25,6 +29,9 @@ public class GameManager : MonoBehaviour {
 		//StartCoroutine(TimeCount());
 		BulletHellPlayer = FindObjectOfType<BH_Player>();
 		CasseBriquePlayer = FindObjectOfType<CB_Bar>();
+
+		cameras = FindObjectsOfType<Camera>();
+		StartCoroutine(ChangeCameraPosition());
 	}
 
 	IEnumerator TimeCount() {
@@ -38,16 +45,30 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timerCount+=Time.deltaTime;
-		DispayTime.text = (/*(int)*/timerCount).ToString("0000.00");
-
+		if (isRunning){
+			timerCount+=Time.deltaTime;
+			DispayTime.text = (/*(int)*/timerCount).ToString("0000.00");
+		}
 		if(Input.GetKey(KeyCode.R))
-			Application.LoadLevel(0);
+			Restart();
 	}
 
+	public void Restart() {
+		Debug.Log("restart");
+		Application.LoadLevel(1);
+	}
+
+	public void Quit() {
+		Debug.Log("restart");
+		Application.Quit();
+	} 
+
+
 	public void FixedUpdate() {
+
+		if (isRunning)
 		if (Input.GetKey(KeyCode.Q) && positionPlayer > -1f) {
-			positionPlayer-=  deltaMove;
+			positionPlayer-= deltaMove;
 			setPositionPlayerMiniGames();
 		} else if (Input.GetKey(KeyCode.D) && positionPlayer < 1) {
 			positionPlayer += deltaMove;
@@ -60,16 +81,40 @@ public class GameManager : MonoBehaviour {
 		CasseBriquePlayer.SetPosition(positionPlayer);
 	}
 
+	IEnumerator ChangeCameraPosition() {
+		yield return new WaitForSeconds(Random.Range(20f, 30f));
+		for (int i = 0; i < cameras.Length; i++) {
+			Rect rect = cameras[i].rect;
+			if (rect.x == 0) {
+				rect.x = 0.5f;
+			} else {
+				rect.x = 0;
+			}
+			cameras[i].rect = rect;
+			Debug.Log(rect);
+		}
+
+		StartCoroutine( ChangeCameraPosition());
+	}
+
 	public void removeLife(){
-		if (livesLeft == 0)
+		if (livesLeft == 0){
 			GameOver();
-		else
+			DispayLivesCount.text = "";
+		} else { 
 			livesLeft--;
+			DispayLivesCount.text = livesLeft.ToString();
+		}
+	}
+
+	public void addLife(){
+		livesLeft++;
 		DispayLivesCount.text = livesLeft.ToString();
-		
 	}
 
 	private void GameOver() {
-		throw new System.NotImplementedException();
+		isRunning = false;
+		GameOverPanel.SetActive(true);
 	}
+
 }
