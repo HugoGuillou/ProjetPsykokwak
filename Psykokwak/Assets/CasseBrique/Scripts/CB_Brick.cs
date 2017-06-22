@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class Brick : MonoBehaviour {
+public class CB_Brick : MonoBehaviour {
 
 	public float height;
 	

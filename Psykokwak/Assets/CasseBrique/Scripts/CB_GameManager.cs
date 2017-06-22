@@ -6,22 +6,22 @@ public class CB_GameManager : MonoBehaviour {
 	public int brickRows = 6;
 	public int brickCols = 6;
 
-	private Brick[][] bricks;
+	private CB_Brick[][] bricks;
 
 	private float BrickAppearTimer = 10;
 
 	public int brickSpanTime = 10;
 	private float brickSpanTimeLeft;
 
-	public Brick brickPrefab;
+	public CB_Brick brickPrefab;
 
 	// Use this for initialization
 	void Start () {
 	
-		bricks = new Brick[brickRows][];
+		bricks = new CB_Brick[brickRows][];
 		for(int i=0; i<brickRows; ++i) 
 		{
-			bricks[i] = new Brick[brickCols];
+			bricks[i] = new CB_Brick[brickCols];
 			for(int j=0; j<brickCols; ++j)
 			{
 				bricks[i][j] = null;
@@ -81,14 +81,14 @@ public class CB_GameManager : MonoBehaviour {
 			Vector3 brickPos = transform.position;
 			brickPos.x += (j * 3.2f) + 0.18f;
 
-			Brick b = Instantiate(brickPrefab, brickPos, transform.rotation) as Brick; 
+			CB_Brick b = Instantiate(brickPrefab, brickPos, transform.rotation) as CB_Brick; 
 			bricks[0][j] = b;
 		}
 
 
 	}
 
-	public void destroyBrick(Brick brick)
+	public void destroyBrick(CB_Brick brick)
 	{
 		for (int i=0; i< brickRows-1; ++i) 
 		{

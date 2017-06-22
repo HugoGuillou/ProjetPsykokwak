@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bar : MonoBehaviour {
+public class CB_Bar : MonoBehaviour {
 
 	private Vector3 _velocity;
 	public float _speed = 0.1f;
@@ -18,9 +18,12 @@ public class Bar : MonoBehaviour {
 	{
 		float xAxis = fVal * 7;
 
-		_velocity = new Vector3 (xAxis, 0, 0) * _speed;
-		
-		transform.Translate (_velocity * Time.deltaTime);
+		//_velocity = new Vector3 (xAxis, 0, 0) * _speed;
+		//transform.Translate (_velocity * Time.deltaTime);
+
+		Vector3 pos = transform.position;
+		pos.x = xAxis;
+		transform.position = pos;
 	
 	}
 

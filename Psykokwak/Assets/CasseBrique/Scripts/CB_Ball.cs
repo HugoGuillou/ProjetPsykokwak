@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ball : MonoBehaviour {
+public class CB_Ball : MonoBehaviour {
 
 	private Vector3 _velocity;
 	public float _speed = 1f;
@@ -53,7 +53,7 @@ public class Ball : MonoBehaviour {
 
 		if (coll.gameObject.tag == "CB_Bar") 
 		{
-			Transform bar = coll.gameObject.GetComponent<Bar>().transform;
+			Transform bar = coll.gameObject.GetComponent<CB_Bar>().transform;
 
 			float posFromBar = ((transform.position.x - bar.position.x) / bar.localScale.x) * 2;
 			offset = posFromBar * _barDeviation;
