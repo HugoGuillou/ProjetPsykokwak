@@ -50,3 +50,5 @@ Temporary Items
 Psykokwak/Library/
 Psykokwak/Temp/
 Psykokwak/ProjectSettings/
+*.csproj
+Psykokwak/Assembly-CSharp-vs.csproj
