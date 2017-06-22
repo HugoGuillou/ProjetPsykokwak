@@ -69,10 +69,10 @@ public class GameManager : MonoBehaviour {
 	public void FixedUpdate() {
 
 		if (isRunning)
-		if (Input.GetKey(KeyCode.Q) && positionPlayer > -1f) {
+		if ((Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow)) && positionPlayer > -1f) {
 			positionPlayer-= deltaMove;
 			setPositionPlayerMiniGames();
-		} else if (Input.GetKey(KeyCode.D) && positionPlayer < 1) {
+		} else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && positionPlayer < 1) {
 			positionPlayer += deltaMove;
 			setPositionPlayerMiniGames();
 		}

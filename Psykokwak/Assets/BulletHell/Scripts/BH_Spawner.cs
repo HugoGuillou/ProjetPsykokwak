@@ -33,8 +33,8 @@ public class BH_Spawner : MonoBehaviour {
 			enemy.transform.position = this.transform.position + new Vector3(Random.Range(-5f, 5f), 0f, 0f);
 			enemy.transform.parent = EnemyParent;
 			enemy.GetComponent<BH_Enemy>().speed = enemySpeed;
-			if (spawnSeconds > 0.01f)
-			spawnSeconds*=0.99f;
+			if (spawnSeconds > 0.5f)
+			spawnSeconds*=0.985f;
 		}
 
 	}
