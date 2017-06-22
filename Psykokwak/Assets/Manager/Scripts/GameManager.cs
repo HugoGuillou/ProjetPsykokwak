@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
 	public BH_Player BulletHellPlayer;
 	public CB_Bar CasseBriquePlayer;
 
+
+
 	// Use this for initialization
 	void Awake () {
 		timerCount = 0;

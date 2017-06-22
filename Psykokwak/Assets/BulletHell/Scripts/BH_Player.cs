@@ -17,7 +17,7 @@ public class BH_Player : MonoBehaviour {
 	void Start () {
 		rb = this.GetComponent<Rigidbody>();
 		renderer = this.GetComponent<Renderer>();
-		playerColor = renderer.material.color;;
+		playerColor = renderer.material.color;
 	}
 	
 	// Update is called once per frame
@@ -56,8 +56,9 @@ public class BH_Player : MonoBehaviour {
 	}
 
 	public void setPositionPlayer(float positionPlayer) {
-		Debug.Log(this.transform.position);
 		this.transform.localPosition =
 			new Vector3(positionPlayer * limitPos, this.transform.position.y, this.transform.position.z);
 	}
+
+
 }
