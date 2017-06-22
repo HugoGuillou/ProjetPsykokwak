@@ -14,7 +14,7 @@ public class Bar : MonoBehaviour {
 
 	}
 
-	void SetPosition(float fVal)
+	public void SetPosition(float fVal)
 	{
 		float xAxis = fVal * 7;
 
