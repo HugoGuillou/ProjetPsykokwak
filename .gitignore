@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#Libraries
+Psykokwak/Library/
+Psykokwak/Temp/
+Psykokwak/ProjectSettings/
