@@ -52,7 +52,9 @@
      <Compile Include="Assets\CasseBrique\Scripts\Ball.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\Bar.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\Brick.cs" />
+     <Compile Include="Assets\CasseBrique\Scripts\CB_GameManager.cs" />
      <Compile Include="Assets\CasseBrique\Scripts\Grid.cs" />
+     <Compile Include="Assets\Manager\Scripts\GameManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.8/Standalone/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -10,7 +10,7 @@ public class BH_Player : MonoBehaviour {
 	Renderer renderer;
 	Coroutine clignotteCoroutine;
 	Color playerColor;
-
+	bool invincibility = false;
 
 	//bool canMove
 	// Use this for initialization
@@ -22,23 +22,24 @@ public class BH_Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetKey(KeyCode.LeftArrow) && this.transform.localPosition.x > -limits.x) { 
+		if (Input.GetKey(KeyCode.Q) && this.transform.localPosition.x > -limits.x) { 
 			prevPos = this.transform.position;
 			this.transform.position = this.transform.position + new Vector3(-0.15f, 0, 0);
-		} else if (Input.GetKey(KeyCode.RightArrow) && this.transform.localPosition.x < limits.x) { 
+		} else if (Input.GetKey(KeyCode.D) && this.transform.localPosition.x < limits.x) { 
 			prevPos = this.transform.position;
 			this.transform.position = this.transform.position + new Vector3(0.15f, 0, 0);
 		}
 	}
 
-	void OnCollisionEnter(Collision c) {
-		Debug.Log(c.collider.name);
-	}
-
 	void OnTriggerEnter(Collider c) {
+		if (invincibility)
+			return;
+
 		if(clignotteCoroutine != null)
 			StopCoroutine(clignotteCoroutine);
 		clignotteCoroutine = StartCoroutine(Clignotte());
+		invincibility = true;
+		GameManager.instance.removeLife();
 	}
 
 	IEnumerator Clignotte() {
@@ -51,5 +52,6 @@ public class BH_Player : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(0.15f);	
 		}
+		invincibility = false;
 	}
 }
