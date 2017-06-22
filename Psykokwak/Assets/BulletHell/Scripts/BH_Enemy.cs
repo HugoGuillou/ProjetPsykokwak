@@ -8,6 +8,7 @@ public class BH_Enemy : MonoBehaviour {
 	public Vector3 direction;
 
 	public BH_Player player;
+	public float speed { get; set; }
 	Vector3 dir;
 
 	// Use this for initialization
@@ -20,10 +21,11 @@ public class BH_Enemy : MonoBehaviour {
 	void FixedUpdate () {
 		if(changeTrajectory)
 			dir = player.transform.position - this.transform.position;
-		this.transform.position = this.transform.position + (dir.normalized*0.1f);
+		this.transform.position = this.transform.position + (dir.normalized * speed);
 		if(this.transform.localPosition.x > 10f || this.transform.localPosition.x < -10f
 		|| this.transform.localPosition.y > 10f || this.transform.localPosition.y < -10f) {
 			Destroy(this.gameObject);
 		}
 	}
+
 }
