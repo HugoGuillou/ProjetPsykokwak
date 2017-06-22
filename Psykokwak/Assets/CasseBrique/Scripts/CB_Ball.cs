@@ -66,10 +66,16 @@ public class CB_Ball : MonoBehaviour {
 		}
 			
 		Vector3 dir = Vector3.Reflect(_velocity, coll.contacts[0].normal); 
-
 		dir = new Vector3 (dir.x + offset, dir.y, 0);
 
-		_velocity = dir.normalized * _speed;
+		Vector3 normalized  = dir.normalized;
+		if (normalized.x > 0.8f) 
+			normalized.x = 0.8f;
+		else if(normalized.x < -0.8f)
+			normalized.x = -0.8f;
+		//Debug.Log (normalized.x);
+
+		_velocity = normalized * _speed;
 	}
 
 	void OnTriggerEnter(Collider coll)

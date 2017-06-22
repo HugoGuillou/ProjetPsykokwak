@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
 	public CB_Bar CasseBriquePlayer;
 	Camera[] cameras;
 
+
+
 	// Use this for initialization
 	void Awake () {
 		timerCount = 0;

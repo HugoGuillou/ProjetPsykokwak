@@ -17,7 +17,6 @@ public class CB_Bar : MonoBehaviour {
 	public void SetPosition(float fVal)
 	{
 		float xAxis = fVal * 7;
-		Debug.Log (xAxis);
 		//_velocity = new Vector3 (xAxis, 0, 0) * _speed;
 		//transform.Translate (_velocity * Time.deltaTime);
 
