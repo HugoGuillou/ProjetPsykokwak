@@ -26,7 +26,7 @@ public class Ball : MonoBehaviour {
 	{
 		float offset = 0f;
 
-		if (coll.gameObject.tag == "Bar") 
+		if (coll.gameObject.tag == "CB_Bar") 
 		{
 			Transform bar = coll.gameObject.GetComponent<Bar>().transform;
 
@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
 	{
-		if (coll.gameObject.tag == "PitOfDespair") 
+		if (coll.gameObject.tag == "CB_PitOfDespair") 
 		{
 			//TODO
 			//GameManager.Lose();

@@ -33,18 +33,18 @@ public class Bar : MonoBehaviour {
 
 	void OnCollisionEnter(Collision coll)
 	{
-		if (coll.gameObject.tag == "LBound") {
+		if (coll.gameObject.tag == "CB_LBound") {
 			blockedLeft = true;
-		} else if (coll.gameObject.tag == "RBound") {
+		} else if (coll.gameObject.tag == "CB_RBound") {
 			blockedRight = true;
 		}
 	}
 
 	void OnCollisionExit(Collision coll)
 	{
-		if (coll.gameObject.tag == "LBound") {
+		if (coll.gameObject.tag == "CB_LBound") {
 			blockedLeft = false;
-		} else if (coll.gameObject.tag == "RBound") {
+		} else if (coll.gameObject.tag == "CB_RBound") {
 			blockedRight = false;
 		}
 	}

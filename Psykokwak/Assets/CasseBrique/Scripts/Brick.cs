@@ -12,4 +12,12 @@ public class Brick : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter(Collision coll)
+	{
+		if (coll.gameObject.tag == "CB_Ball") 
+		{
+			Destroy(gameObject);
+		}
+	}
 }
