@@ -69,11 +69,17 @@ public class CB_Ball : MonoBehaviour {
 		dir = new Vector3 (dir.x + offset, dir.y, 0);
 
 		Vector3 normalized  = dir.normalized;
-		if (normalized.x > 0.8f) 
-			normalized.x = 0.8f;
-		else if(normalized.x < -0.8f)
-			normalized.x = -0.8f;
-		//Debug.Log (normalized.x);
+		/*
+		if (normalized.x > 0.9f) 
+			normalized.x = 0.9f;
+		else if(normalized.x < -0.9f)
+			normalized.x = -0.9f;
+		Debug.Log (normalized.x);
+		*/
+		if (normalized.y < 0.1f && normalized.y > 0f) 
+			normalized.y = 0.1f;
+		else if(normalized.y > -0.1f && normalized.y < 0f)
+			normalized.y = -0.1f;
 
 		_velocity = normalized * _speed;
 	}

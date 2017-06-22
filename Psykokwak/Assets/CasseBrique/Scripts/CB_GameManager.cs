@@ -63,14 +63,11 @@ public class CB_GameManager : MonoBehaviour {
 
 		for(int j=0; j < brickCols; ++j)
 		{
-			if(bricks[brickCols-1][j] != null)
-				destroyBrick(bricks[brickCols-1][j]);
+			if(bricks[brickRows-1][j] != null)
+				destroyBrick(bricks[brickRows-1][j]);
 		}
 
 	
-
-		Debug.Log("Append");
-
 		for (int i=brickRows-1; i>0; --i) 
 		{
 
@@ -84,7 +81,6 @@ public class CB_GameManager : MonoBehaviour {
 					bricks[i-1][j].transform.position = pos;
 
 				}
-				
 				bricks[i][j] = bricks[i-1][j];
 			}
 		}
