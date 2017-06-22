@@ -27,7 +27,7 @@ public class Brick : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision coll)
+	void OnCollisionExit(Collision coll)
 	{
 		if (coll.gameObject.tag == "CB_Ball") 
 		{
